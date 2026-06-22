@@ -1,7 +1,10 @@
+
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Tiktoe {
+
     static Scanner sc = new Scanner(System.in);
 
     public static char[][] board = {
@@ -16,44 +19,43 @@ public class Tiktoe {
 
     public static void main(String[] args) {
         boolean Gameon = true;
+        sc.nextLine(); // Consume leftover newline
+
+        int cols = 50;
+
+        // Top border
+        for (int i = 0; i < cols; i++)
+            System.out.print("*");
+        System.out.println();
+
+        // Content
+        System.out.println("*                Tik-Tak-Toe                     *");
+        System.out.println("*      first player to aline 3 symbols wins!     *");
+        for (int i = 0; i < cols; i++)
+            System.out.print("*");
+        System.out.println();
+
+        System.out.print("Enter name of player 1(X):");
+        p1 = sc.nextLine();
+        System.out.print("Enter name of player 2(O):");
+        p2 = sc.nextLine();
+        System.out.println();
+
+        printBoard();
 
         while (Gameon) {
-            sc.nextLine(); // Consume leftover newline
-
-            int cols = 50;
-
-            // Top border
-            for (int i = 0; i < cols; i++)
-                System.out.print("*");
-            System.out.println();
-
-            // Content
-            System.out.println("*                Tik-Tak-Toe                     *");
-            System.out.println("*      first player to aline 3 symbols wins!     *");
-            for (int i = 0; i < cols; i++)
-                System.out.print("*");
-            System.out.println();
-
-            System.out.print("Enter name of player 1(X):");
-            p1 = sc.nextLine();
-            System.out.print("Enter name of player 2(O):");
-            p2 = sc.nextLine();
-            System.out.println();
-
             System.out.println("============");
             System.out.println("=  SCORES  =");
             System.out.println("= " + p1 + ": " + scoreX + " =");
             System.out.println("= " + p2 + ": " + scoreO + " =");
             System.out.println("============");
             System.out.println();
-
-            printBoard();
-            char winner=start(p1, p2);
+            char winner = start(p1, p2);
             sc.nextLine(); // Consume leftover newline
 
-            if (winner=='X') {
+            if (winner == 'X') {
                 scoreX += 1;
-            } else if (winner=='O') {
+            } else if (winner == 'O') {
                 scoreO += 1;
             } else {
                 System.out.println("its a draw !!");
@@ -281,7 +283,8 @@ public class Tiktoe {
                 }
             } else { // odd turns = p2
                 System.out.println("Turn of " + p2);
-                pick = cellinput();
+                pick = randomcell();
+                System.out.println(p2 + " (computer) picks " + pick);
                 cellpicked(pick, 'O');
                 printBoard();
                 if (checkwin(board, 'O')) {
@@ -314,5 +317,18 @@ public class Tiktoe {
             }
         }
         return false;
+    }
+
+    public static String randomcell() {
+        Random rand = new Random();
+        String[] allcells = { "A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3" };
+        int[] row = { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
+        int[] col = { 0, 1, 2, 0, 1, 2, 0, 1, 2 };
+        int index;
+        do {
+            index = rand.nextInt(9);
+        } while (board[row[index]][col[index]] != ' ');
+
+        return allcells[index];
     }
 }
