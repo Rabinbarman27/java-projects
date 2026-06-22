@@ -48,12 +48,12 @@ public class Tiktoe {
             System.out.println();
 
             printBoard();
-            start(p1, p2);
+            char winner=start(p1, p2);
             sc.nextLine(); // Consume leftover newline
 
-            if (checkwin(board, 'X')) {
+            if (winner=='X') {
                 scoreX += 1;
-            } else if (checkwin(board, 'O')) {
+            } else if (winner=='O') {
                 scoreO += 1;
             } else {
                 System.out.println("its a draw !!");
@@ -266,7 +266,7 @@ public class Tiktoe {
         return false;
     }
 
-    public static void start(String p1, String p2) {
+    public static char start(String p1, String p2) {
         String pick;
         for (int turn = 0; turn < 9; turn++) {
             if (turn % 2 == 0) { // even turns = p1
@@ -277,7 +277,7 @@ public class Tiktoe {
                 printBoard();
                 if (checkwin(board, 'X')) {
                     System.out.println(p1 + " wins");
-                    return;
+                    return 'X';
                 }
             } else { // odd turns = p2
                 System.out.println("Turn of " + p2);
@@ -286,21 +286,14 @@ public class Tiktoe {
                 printBoard();
                 if (checkwin(board, 'O')) {
                     System.out.println(p2 + " wins");
-                    return;
+                    return 'O';
                 }
             }
         }
         System.out.println("Its a draw!");
+        return ' ';
     }
 
-    // ACCEPTING CELLS
-    /*
-     * public static String cellinput() {
-     * // String input;
-     * // System.out.println("Enter a cell name eg.(A1,A2)");
-     * // input = sc.next();
-     * // return input;
-     */
     public static String cellinput() {
         String input;
         do {
