@@ -21,6 +21,6 @@ public class Rectangle extends Shapecalculator {
     @Override
     public void addtoShapereport() {
         Shapereport.add("Rectangle  |  Area : " + String.format("%.2f",area()) + "|  parameter : " + String.format("%.2f",parameter()));
-
+        areas.add(area());
     }
 }

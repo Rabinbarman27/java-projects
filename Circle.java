@@ -21,8 +21,7 @@ public class Circle extends Shapecalculator {
     @Override
     public void addtoShapereport() {
         Shapereport.add("Circle     |  Area : " + String.format("%.2f",area()) + "|  parameter : " + String.format("%.2f",parameter()));
-
-
+        areas.add(area());
 
     }
 
