@@ -50,12 +50,14 @@ public class Shapemain {
         for (String S : Shapecalculator.Shapereport) {
             System.out.println(S);
         }
-        System.out.print("total shapes : " + Shapecalculator.Shapereport.size()+" ");
-        double sum=0;
-        for( double d :Shapecalculator.areas){
-            sum+=d;
+        System.out.print("total shapes : " + Shapecalculator.Shapereport.size() + " ");
+        double sum = 0;
+        for (double d : Shapecalculator.areas) {
+            sum += d;
         }
         System.out.print("total area : " + String.format("%.2f", sum));
+        System.out.println();
+        System.out.println("--------------------");
 
     }
 }
