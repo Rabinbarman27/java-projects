@@ -1,3 +1,5 @@
+package Shape_Calculator;
+
 public class triangle extends Shapecalculator {
     double Side;
     double height;
@@ -21,7 +23,8 @@ public class triangle extends Shapecalculator {
 
     @Override
     public void addtoShapereport() {
-        Shapereport.add("Triangle   |  Area : " + String.format("%.2f",area()) + "|  parameter : " + String.format("%.2f",parameter()));
+        Shapereport.add("Triangle   |  Area : " + String.format("%.2f", area()) + "|  parameter : "
+                + String.format("%.2f", parameter()));
         areas.add(area());
     }
 }

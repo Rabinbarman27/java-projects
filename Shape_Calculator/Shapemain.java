@@ -1,3 +1,5 @@
+package Shape_Calculator;
+
 import java.util.Scanner;
 
 public class Shapemain {

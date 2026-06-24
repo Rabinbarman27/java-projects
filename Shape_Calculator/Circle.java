@@ -1,3 +1,5 @@
+package Shape_Calculator;
+
 public class Circle extends Shapecalculator {
     double radious;
 
@@ -15,12 +17,13 @@ public class Circle extends Shapecalculator {
     @Override
     public double parameter() {
 
-        return 2 * Math.PI * radious ;
+        return 2 * Math.PI * radious;
     }
 
     @Override
     public void addtoShapereport() {
-        Shapereport.add("Circle     |  Area : " + String.format("%.2f",area()) + "|  parameter : " + String.format("%.2f",parameter()));
+        Shapereport.add("Circle     |  Area : " + String.format("%.2f", area()) + "|  parameter : "
+                + String.format("%.2f", parameter()));
         areas.add(area());
 
     }
