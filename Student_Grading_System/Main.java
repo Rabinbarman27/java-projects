@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("================================");
-        System.out.println("    BANK ACCOUNT SYSTEM v1.0    ");
+        System.out.println("  STUDENT GRADING SYSTEM v1.0   ");
         System.out.println("================================");
         boolean Grading_insession = true;
         boolean Student_Session = true;
