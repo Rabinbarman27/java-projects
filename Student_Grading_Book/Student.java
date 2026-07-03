@@ -31,10 +31,13 @@ public class Student {
 
         if (grade.equalsIgnoreCase("stop") || grade.equalsIgnoreCase("-1")) {
             return false;
-        } else {
+        }
 
-            validategrades(Integer.parseInt(grade));
-
+        try {
+            int marks = Integer.parseInt(grade);
+            validategrades(marks);
+        } catch (NumberFormatException e) {
+            throw new InvalidGradingException("Please enter a valid number (or -1/stop).");
         }
 
         return true;
