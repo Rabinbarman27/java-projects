@@ -27,7 +27,7 @@ public class Main {
                     Grading_insession = s1.addGrade();
 
                 } catch (InvalidGradingException e) {
-                    System.err.println("input failed" + e.getMessage());
+                    System.out.println("input failed" + e.getMessage());
 
                 }
 

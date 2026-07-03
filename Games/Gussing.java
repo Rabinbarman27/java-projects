@@ -109,7 +109,7 @@ public class Gussing {
         }
         
         else if (guess > randomNumber) {
-            System.err.println("Hot");
+            System.out.println("Hot");
         }
         else {
             System.out.println("cold");
