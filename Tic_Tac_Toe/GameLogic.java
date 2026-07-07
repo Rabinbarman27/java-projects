@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class GameLogic {
     static Scanner sc = new Scanner(System.in);
 
-    public static String cellinput() {
+    public static String cellInput() {
         String input;
         do {
             System.out.println("Enter a cell name eg.(A1,A2)");
@@ -30,15 +30,15 @@ public class GameLogic {
         return false;
     }
 
-    public Boolean checkwin(char[][] Array, char symbol) {
+    public Boolean checkWin(char[][] array, char symbol) {
         if (symbol == 'X') {
-            if (checkboard(Array, symbol)) {
+            if (checkBoard(array, symbol)) {
                 // System.out.println(p1 + " wins");
                 return true;
             }
         }
         if (symbol == 'O') {
-            if (checkboard(Array, symbol)) {
+            if (checkBoard(array, symbol)) {
                 // System.out.println(p2 + " wins");
                 return true;
             }
@@ -47,19 +47,19 @@ public class GameLogic {
         return false;
     }
 
-    public boolean checkboard(char[][] Array, char symbol) {
+    public boolean checkBoard(char[][] array, char symbol) {
         for (int row = 0; row < 3; row++) {
-            if (checkrow(Array, symbol, row)) {
+            if (checkRow(array, symbol, row)) {
                 return true;
             }
         }
         for (int col = 0; col < 3; col++) {
-            if (checkcolum(Array, symbol, col)) {
+            if (checkColumn(array, symbol, col)) {
                 return true;
             }
 
         }
-        if (checkdiagnoal(Array, symbol)) {
+        if (checkDiagnoal(array, symbol)) {
             return true;
         }
 
@@ -67,9 +67,9 @@ public class GameLogic {
     }
 
     // CHECK ROWWS===
-    public boolean checkrow(char[][] Array, char symbol, int row) {
+    public boolean checkRow(char[][] array, char symbol, int row) {
         for (int col = 0; col < 3; col++) {
-            if (Array[row][col] != symbol) {
+            if (array[row][col] != symbol) {
                 return false;
             }
         }
@@ -77,9 +77,9 @@ public class GameLogic {
     }
 
     // CHECK COLUMS===
-    public boolean checkcolum(char[][] Array, char symbol, int col) {
+    public boolean checkColumn(char[][] array, char symbol, int col) {
         for (int row = 0; row < 3; row++) {
-            if (Array[row][col] != symbol) {
+            if (array[row][col] != symbol) {
                 return false;
             }
         }
@@ -87,11 +87,11 @@ public class GameLogic {
     }
 
     // CHECK DIAGNOLS===
-    public boolean checkdiagnoal(char[][] Array, char symbol) {
-        if (Array[0][0] == symbol && Array[1][1] == symbol && Array[2][2] == symbol) {
+    public boolean checkDiagnoal(char[][] array, char symbol) {
+        if (array[0][0] == symbol && array[1][1] == symbol && array[2][2] == symbol) {
             return true;
         }
-        if (Array[0][2] == symbol && Array[1][1] == symbol && Array[2][0] == symbol) {
+        if (array[0][2] == symbol && array[1][1] == symbol && array[2][0] == symbol) {
             return true;
         }
         return false;

@@ -7,7 +7,7 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        boolean Gameon = true;
+        boolean gameon = true;
         sc.nextLine(); // Consume leftover newline
 
         int cols = 50;
@@ -33,7 +33,7 @@ public class Main {
         Scoreboard s1 = new Scoreboard();
         b1.printBoard();
 
-        while (Gameon) {
+        while (gameon) {
             System.out.println("============");
             System.out.println("=  SCORES  =");
             System.out.println("= " + p1 + ": " + s1.viewWinsX() + " =");
@@ -54,7 +54,7 @@ public class Main {
             System.out.println("DO YOU WANT TO PLAY AGAIN ? (Y/N)");
             String answer = sc.next();
             if (answer.equalsIgnoreCase("N")) {
-                Gameon = false;
+                gameon = false;
             } else {
                 for (char[] row : b1.board) {
                     Arrays.fill(row, ' ');

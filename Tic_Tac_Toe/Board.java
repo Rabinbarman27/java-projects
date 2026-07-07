@@ -40,8 +40,8 @@ public class Board {
 
     }
 
-    public boolean isCellEmpty(char CellName) {
-        if (CellName == ' ') {
+    public boolean isCellEmpty(char cell) {
+        if (cell == ' ') {
             return true;
         }
         System.out.println("cell not empty");
@@ -54,20 +54,20 @@ public class Board {
             if (turn % 2 == 0) { // even turns = p1
                 System.out.println("Turn of " + p1);
 
-                pick = cellinput();
-                cellpicked(pick, 'X');
+                pick = cellInput();
+                cellPicked(pick, 'X');
                 printBoard();
-                if (g.checkwin(board, 'X')) {
+                if (g.checkWin(board, 'X')) {
                     System.out.println(p1 + " wins");
                     return 'X';
                 }
             } else { // odd turns = p2
                 System.out.println("Turn of " + p2);
-                pick = randomcell();
+                pick = randomCell();
                 System.out.println(p2 + " (computer) picks " + pick);
-                cellpicked(pick, 'O');
+                cellPicked(pick, 'O');
                 printBoard();
-                if (g.checkwin(board, 'O')) {
+                if (g.checkWin(board, 'O')) {
                     System.out.println(p2 + " wins");
                     return 'O';
                 }
@@ -77,7 +77,7 @@ public class Board {
         return ' ';
     }
 
-    public String cellinput() {
+    public String cellInput() {
         String input;
         do {
             System.out.println("Enter a cell name eg.(A1,A2)");
@@ -99,13 +99,13 @@ public class Board {
         return false;
     }
 
-    public void cellpicked(String cellName, char symbol) {
+    public void cellPicked(String cellName, char symbol) {
         String pick;
         switch (cellName) {
             case "A1": // double quotes
                 if (!isCellEmpty(board[0][0])) {
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
                     board[0][0] = symbol;
@@ -113,8 +113,8 @@ public class Board {
                 break;
             case "A2":
                 if (!isCellEmpty(board[0][1])) {
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
 
                 } else {
@@ -124,8 +124,8 @@ public class Board {
             case "A3":
                 if (!isCellEmpty(board[0][2])) {
 
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
                     board[0][2] = symbol;
@@ -133,8 +133,8 @@ public class Board {
                 break;
             case "B1":
                 if (!isCellEmpty(board[1][0])) {
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
                     board[1][0] = symbol;
@@ -143,8 +143,8 @@ public class Board {
             case "B2":
                 if (!isCellEmpty(board[1][1])) {
 
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
                     board[1][1] = symbol;
@@ -152,8 +152,8 @@ public class Board {
                 break;
             case "B3":
                 if (!isCellEmpty(board[1][2])) {
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
 
@@ -163,8 +163,8 @@ public class Board {
             case "C1":
                 if (!isCellEmpty(board[2][0])) {
 
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
                     board[2][0] = symbol;
@@ -172,8 +172,8 @@ public class Board {
                 break;
             case "C2":
                 if (!isCellEmpty(board[2][1])) {
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
 
@@ -182,8 +182,8 @@ public class Board {
                 break;
             case "C3":
                 if (!isCellEmpty(board[2][2])) {
-                    pick = cellinput();
-                    cellpicked(pick, symbol);
+                    pick = cellInput();
+                    cellPicked(pick, symbol);
                     printBoard();
                 } else {
                     board[2][2] = symbol;
@@ -196,7 +196,7 @@ public class Board {
 
     }
 
-    public String randomcell() {
+    public String randomCell() {
         Random rand = new Random();
         String[] allcells = { "A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3" };
         int[] row = { 0, 0, 0, 1, 1, 1, 2, 2, 2 };
