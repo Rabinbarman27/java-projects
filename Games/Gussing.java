@@ -1,4 +1,5 @@
 package Games;
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -9,7 +10,7 @@ public class Gussing {
         boolean Gameon = true;
 
         while (Gameon) {
-            sc.nextLine();  // Consume leftover newline
+            sc.nextLine(); // Consume leftover newline
 
             int cols = 50;
 
@@ -33,16 +34,16 @@ public class Gussing {
             String p2 = sc.nextLine();
             System.out.println("*===============================================*");
             System.out.println("* Player 1 is : " + p1 + "\n* Player 2 is : " + p2);
-            int range=range();
-            Start(p1, p2,range);
-            sc.nextLine();  // Consume leftover newline
+            int range = range();
+            Start(p1, p2, range);
+            sc.nextLine(); // Consume leftover newline
             System.out.println("DO YOU WANT TO PLAY AGAIN ? (Y/N)");
             String answer = sc.next();
             if (answer.equalsIgnoreCase("N")) {
                 Gameon = false;
-             }
-
             }
+
+        }
         sc.close();
     }
 
@@ -53,52 +54,52 @@ public class Gussing {
 
         return randomNumber;
     }
-    public static int range(){
+
+    public static int range() {
 
         System.out.println("Enter guess range");
         int guessRange = sc.nextInt();
         return guessRange;
     }
-    public static void Start(String player1, String player2,int limit) {
+
+    public static void Start(String player1, String player2, int limit) {
         int chances = 5;
         int guess1;
         int guess2;
-        //int range=RandomNumber().guessRange;
+        // int range=RandomNumber().guessRange;
         int randomNumber = RandomNumber(limit);
         while (chances > 0) {
             for (int i = 0; i < 2; i++) {
                 System.out.println("Turn of " + player1);
                 guess1 = sc.nextInt();
-                if(guess1>limit){
+                if (guess1 > limit) {
                     System.out.println("number should be in range");
-                    System.out.println("chances left : " + (chances-1));
-                }
-                else{
+                    System.out.println("chances left : " + (chances - 1));
+                } else {
                     if (Check(guess1, player1, randomNumber)) {
-                    return;
-                }
-                System.out.println("chances left : " + (chances-1));
+                        return;
+                    }
+                    System.out.println("chances left : " + (chances - 1));
 
                 }
-                
+
                 System.out.println("Turn of " + player2);
                 guess2 = sc.nextInt();
-                if(guess2>limit){
+                if (guess2 > limit) {
                     System.out.println("number should be in range");
-                    System.out.println("chances left : " + (chances-1));
-                }
-                else{
-                if (Check(guess2, player2, randomNumber)) {
-                    return;
-                }
-                System.out.println("chances left : " + (chances-1));
-                
-            }
+                    System.out.println("chances left : " + (chances - 1));
+                } else {
+                    if (Check(guess2, player2, randomNumber)) {
+                        return;
+                    }
+                    System.out.println("chances left : " + (chances - 1));
 
-            chances -= 1;
+                }
+
+                chances -= 1;
+            }
         }
-        }
-         System.out.println("both lose , the number was : "+ randomNumber);
+        System.out.println("both lose , the number was : " + randomNumber);
         return;
     }
 
@@ -107,11 +108,10 @@ public class Gussing {
             System.out.println(Player + " wins");
             return true;
         }
-        
+
         else if (guess > randomNumber) {
             System.out.println("Hot");
-        }
-        else {
+        } else {
             System.out.println("cold");
         }
         return false;
