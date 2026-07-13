@@ -11,13 +11,10 @@ public class ContactBook {
     ContactBook(String name, String phone) {
         this.name = name;
         this.phone = phone;
-        try{
-            validateContacts(name);
-            contacts.put(name,phone);
-        }
-        catch (ContactAlreadyExixstException e){
-            System.out.println("Error "+ e.getMessage());
-        }
+
+    }
+
+    ContactBook() {
 
     }
 
@@ -89,14 +86,17 @@ public class ContactBook {
     }
 
     public void listContacts() {
-        System.out.println("--CONTACTS--");
-        for (Map.Entry<String, String> entry : contacts.entrySet()) {
-            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        if (contacts.isEmpty()) {
+            System.out.println("No contacts present");
+        } else {
+            System.out.println("--CONTACTS--");
+            for (Map.Entry<String, String> entry : contacts.entrySet()) {
+                System.out.println(entry.getKey() + " -> " + entry.getValue());
+            }
         }
     }
 
     public void printMenu() {
-        System.out.println("\n--- Contact Book ---");
         System.out.println("1. Add contact");
         System.out.println("2. Delete contact");
         System.out.println("3. Search contact");
