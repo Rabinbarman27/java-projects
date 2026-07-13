@@ -1,5 +1,7 @@
 package MiniContactBook;
 
-public class ContactAlreadyExixstException {
-    
+public class ContactAlreadyExixstException extends RuntimeException{
+    public ContactAlreadyExixstException(String message){
+        super(message);
+    }
 }

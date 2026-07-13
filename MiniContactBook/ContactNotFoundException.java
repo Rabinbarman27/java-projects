@@ -1,5 +1,7 @@
 package MiniContactBook;
 
-public class ContactNotFoundException {
-    
+public class ContactNotFoundException extends RuntimeException {
+    public ContactNotFoundException(String message){
+        super(message);
+    }
 }
