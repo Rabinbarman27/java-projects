@@ -1,6 +1,5 @@
 package MiniContactBook;
 
-import java.util.HashMap;
 import java.util.*;
 import java.io.*;
 
@@ -26,7 +25,6 @@ public class ContactBook {
         return phone;
     }
 
-
     private HashMap<String, String> contacts = new HashMap<>();
     static Scanner sc = new Scanner(System.in);
     static final String File_NAME = "contacts.txt";
@@ -37,6 +35,8 @@ public class ContactBook {
             throw new ContactAlreadyExixstException(" Contact already exists. Use update instead.");
         }
     }
+
+    
 
     public void checkContact(String name) {
         String key = name.trim().toLowerCase();
@@ -107,8 +107,16 @@ public class ContactBook {
 
     public boolean menu() {
         System.out.print("Choose: ");
-        int choice = sc.nextInt();
-        sc.nextLine();
+        int choice;
+        try {
+            choice = sc.nextInt();
+            sc.nextLine();
+        } catch (InputMismatchException e) {
+            sc.nextLine();
+            System.err.println("Error: input should be a number between 1-5 ");
+            return true;
+        }
+
         if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5) {
             switch (choice) {
                 case 1 -> addContact();
@@ -133,9 +141,11 @@ public class ContactBook {
     // loading data into the file
     public void toSaveFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(File_NAME))) {
-            /*for (String c : contacts.values()) {
-                writer.println(c);
-            }*/
+            /*
+             * for (String c : contacts.values()) {
+             * writer.println(c);
+             * }
+             */
             for (Map.Entry<String, String> entry : contacts.entrySet()) {
                 writer.println(entry.getKey() + "," + entry.getValue());
             }
